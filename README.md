@@ -1,4 +1,4 @@
-**Package for ejecting cdrom under Go. Can be used for SATA devices.**
+**Package for open/close cdrom tray under Go. Can be used for SATA devices.**
 
 
 
@@ -22,10 +22,10 @@ func main()  {
 		os.Exit(1)
 	}
 
-	if _, err := unix.IoctlGetInt(int(cd.Fd()), eject.CDROM_START); err != nil {
+	if _, err := unix.IoctlGetInt(int(cd.Fd()), eject.CDROMEJECT); err != nil {
 		fmt.Println("ERROR:",err)
 	}
-	if _, err := unix.IoctlGetInt(int(cd.Fd()), eject.CDROM_STOP); err != nil {
+	if _, err := unix.IoctlGetInt(int(cd.Fd()), eject.CDROMCLOSETRAY); err != nil {
 		fmt.Println("ERROR:",err)
 	}
 }
